@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ───── HEADER ───── -->
+  <header class="top-bar">
+    <div class="top-bar__left">
+      <span id="clock" class="clock"></span>
+      <span id="date-display" class="date-display"></span>
+    </div>
+    <div class="top-bar__right">
+      <button id="theme-toggle" class="btn btn--icon" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <span id="theme-icon">🌙</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ───── MAIN ───── -->
+  <main class="dashboard">
+
+    <!-- GREETING SECTION -->
+    <section class="card greeting-card">
+      <div class="greeting-name-row">
+        <h1 id="greeting" class="greeting-text"></h1>
+        <button id="edit-name-btn" class="btn btn--ghost btn--sm" title="Change your name">✏️ Change name</button>
+      </div>
+      <!-- Name modal -->
+      <div id="name-modal" class="modal hidden">
+        <div class="modal__backdrop"></div>
+        <div class="modal__box">
+          <h2>What's your name?</h2>
+          <input id="name-input" class="input" type="text" placeholder="Enter your name…" maxlength="40" />
+          <div class="modal__actions">
+            <button id="name-cancel" class="btn btn--ghost">Cancel</button>
+            <button id="name-save" class="btn btn--primary">Save</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOCUS TIMER SECTION -->
+    <section class="card timer-card">
+      <h2 class="card__title">Focus Timer</h2>
+
+      <!-- Custom duration input -->
+      <div class="timer-config">
+        <label for="custom-minutes" class="timer-config__label">Session length (minutes):</label>
+        <input id="custom-minutes" class="input input--narrow" type="number" min="1" max="120" value="25" />
+        <button id="set-duration-btn" class="btn btn--ghost btn--sm">Set</button>
+      </div>
+
+      <div class="timer-display">
+        <span id="timer-time" class="timer-time">25:00</span>
+        <div class="timer-progress">
+          <div id="timer-bar" class="timer-progress__bar" style="width: 100%"></div>
+        </div>
+      </div>
+
+      <div class="timer-controls">
+        <button id="timer-start" class="btn btn--primary">▶ Start</button>
+        <button id="timer-stop" class="btn btn--secondary" disabled>⏸ Stop</button>
+        <button id="timer-reset" class="btn btn--ghost">↺ Reset</button>
+      </div>
+    </section>
+
+    <!-- TO-DO LIST SECTION -->
+    <section class="card todo-card">
+      <div class="card__header">
+        <h2 class="card__title">To-Do List</h2>
+        <div class="todo-controls">
+          <select id="sort-select" class="select">
+            <option value="default">Sort: Default</option>
+            <option value="az">Sort: A → Z</option>
+            <option value="za">Sort: Z → A</option>
+            <option value="done">Sort: Done last</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="todo-add-row">
+        <input id="todo-input" class="input" type="text" placeholder="Add a new task…" maxlength="120" />
+        <button id="todo-add-btn" class="btn btn--primary">Add</button>
+      </div>
+
+      <ul id="todo-list" class="todo-list"></ul>
+      <p id="todo-empty" class="empty-hint">No tasks yet. Add one above!</p>
+    </section>
+
+    <!-- QUICK LINKS SECTION -->
+    <section class="card links-card">
+      <div class="card__header">
+        <h2 class="card__title">Quick Links</h2>
+        <button id="add-link-btn" class="btn btn--primary btn--sm">+ Add link</button>
+      </div>
+
+      <div id="links-grid" class="links-grid"></div>
+      <p id="links-empty" class="empty-hint">No links saved yet.</p>
+
+      <!-- Add / Edit link modal -->
+      <div id="link-modal" class="modal hidden">
+        <div class="modal__backdrop"></div>
+        <div class="modal__box">
+          <h2 id="link-modal-title">Add Quick Link</h2>
+          <label class="form-label" for="link-name-input">Label</label>
+          <input id="link-name-input" class="input" type="text" placeholder="e.g. GitHub" maxlength="30" />
+          <label class="form-label" for="link-url-input">URL</label>
+          <input id="link-url-input" class="input" type="url" placeholder="https://…" />
+          <div class="modal__actions">
+            <button id="link-cancel" class="btn btn--ghost">Cancel</button>
+            <button id="link-save" class="btn btn--primary">Save</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
